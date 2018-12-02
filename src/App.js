@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import MovieList from './MovieList.js'
 
 class App extends Component {
   constructor(props) {
@@ -18,16 +19,10 @@ class App extends Component {
   }
 
   render() {
-    const movieElements = this.state.movies.map((movie) => {
-      return (
-        <li key={movie.id}>{movie.title}</li>
-      );
-    });
-
     return (
       <div className="App">
         <h1>Movies to expand the mind</h1>
-        <ul>{movieElements}</ul>
+        <MovieList movies={this.state.movies} />
       </div>
     );
   }

@@ -7,22 +7,35 @@ class App extends Component {
     super(props);
     this.state = {
       movies: [],
+      errorMsg: '',
     };
   }
 
   componentWillMount() {
     getMoviesFromApiAsync()
       .then((movies) => {
-        this.setState({movies: movies});
+          this.setState({
+            movies: movies,
+            errorMsg: '',
+          });        
+      })
+      .catch((error) => {
+        this.setState({
+          movies: [],
+          errorMsg: 'Loading movies failed. Please try again later.'
+        });
       });
-      // TODO: error handling
   }
 
   render() {
     return (
       <div className="App">
         <h1>Movies to expand the mind</h1>
-        <MovieList movies={this.state.movies} />
+        {
+          !this.state.errorMsg ? 
+          <MovieList movies={this.state.movies} /> :
+          <div className="error">{this.state.errorMsg}</div>
+        }        
       </div>
     );
   }
@@ -36,6 +49,7 @@ function getMoviesFromApiAsync() {
     })
     .catch((error) => {
       console.error(error);
+      throw error;
     });
 }
 

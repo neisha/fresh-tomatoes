@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 } */
+button:disabled {
+  opacity: 0.5;
+  user-select: none;
+  cursor:none;
+  pointer-events: none;
+}

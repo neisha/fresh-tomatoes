@@ -14,37 +14,35 @@ class App extends Component {
   }
 
   handleClick = () => {
-    // TODO: disable button when loading
     this.setState(
       {
         loading: true,
         movies: [],
         errorMsg: '',
       });
-    setTimeout(() => { // TODO: remove debug code
-      getMoviesFromApiAsync()
-        .then((movies) => {
-            this.setState({
-              movies: movies,
-              errorMsg: '',
-              loading: false,
-            });
-        })
-        .catch((error) => {
+
+    getMoviesFromApiAsync()
+      .then((movies) => {
           this.setState({
-            movies: [],
-            errorMsg: 'Loading movies failed. Please try again later.',
+            movies: movies,
+            errorMsg: '',
             loading: false,
           });
+      })
+      .catch((error) => {
+        this.setState({
+          movies: [],
+          errorMsg: 'Loading movies failed. Please try again later.',
+          loading: false,
         });
-    }, 1000);
+      });
   }
 
   render() {
     return (
       <div className="App">
         <h1>Movies to expand the mind</h1>
-        <button onClick={this.handleClick}>Load Movies</button>
+        <button onClick={this.handleClick} disabled={this.state.loading}>Load Movies</button>
         {
           this.state.loading ? 
           <Spinner /> :

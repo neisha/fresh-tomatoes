@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+    };
+  }
+
+  componentWillMount() {
+    getMoviesFromApiAsync()
+      .then((movies) => {
+        this.setState({movies: movies});
+      });
+      // TODO: error handling
+  }
+
   render() {
+    const movieElements = this.state.movies.map((movie) => {
+      return (
+        <li key={movie.id}>{movie.title}</li>
+      );
+    });
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Movies to expand the mind</h1>
+        <ul>{movieElements}</ul>
       </div>
     );
   }
+}
+
+function getMoviesFromApiAsync() {
+  return fetch('https://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.movies;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 export default App;

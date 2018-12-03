@@ -1,0 +1,22 @@
+.MovieList {
+    margin: 0;
+    padding: 0;
+
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Movie {
+    margin: 10px;
+    list-style: none;
+    text-align: center;
+}
+
+.Movie__title {
+    margin-top: 10px;
+}

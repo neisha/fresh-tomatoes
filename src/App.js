@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
 import MovieList from './MovieList.js';
 import Spinner from './Spinner.js';
@@ -19,14 +20,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Movies to expand the mind</h1>
-        <button onClick={this.handleClick} disabled={this.props.isLoading}>Load Movies</button>
+        <img className="Logo" src={logo} />
+        <button class="Button" onClick={this.handleClick} disabled={this.props.isLoading}>I want the movies</button>
         {
           this.props.isLoading ? 
           <Spinner /> :
           !this.props.errorMsg ? 
           <MovieList movies={this.props.movies} /> :
-          <div className="error">{this.props.errorMsg}</div>
+          <div className="ErrorMsg">{this.props.errorMsg}</div>
         }        
       </div>
     );

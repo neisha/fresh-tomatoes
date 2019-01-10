@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class MovieRater extends Component {
     handleOptionChange = (changeEvent) => {
-        this.props.rateMovieAction(changeEvent.target.value);
+        this.props.rateMovieAction(parseInt(changeEvent.target.value));
     }
 
     render() { return (

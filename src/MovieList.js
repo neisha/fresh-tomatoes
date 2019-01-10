@@ -27,6 +27,7 @@ class MovieList extends Component
                 <li className="Movie" key={movie.id}>
                     <img className="Movie__image" src={MovieIcon} />
                     <div className="Movie__title">{movie.title}</div>
+                    <span>{movie.rating == null ? 'No rating' : `${movie.rating} stars`}</span>
                     <MovieRater rateMovieAction={(stars) => this.rateMovie(movie.id, stars)} />
                 </li>
                 )

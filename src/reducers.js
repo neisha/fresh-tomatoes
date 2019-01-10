@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { MOVIES_REQUEST, MOVIES_SUCCESS, MOVIES_FAILURE } from './actions';
+import { MOVIES_REQUEST, MOVIES_SUCCESS, MOVIES_FAILURE, MOVIERATINGS_SUCCESS } from './actions';
 
 // Reducers
 const movies = (
@@ -12,6 +12,14 @@ const movies = (
     case MOVIES_REQUEST:
     case MOVIES_FAILURE:
       return [];
+    case MOVIERATINGS_SUCCESS:
+      return state.map(movie => {
+        if(movie.id in action.ratings) {
+          const rating = action.ratings[`${movie.id}`];
+          movie.rating = rating;
+        }
+        return movie;
+      });        
     default:
       return state;
   }

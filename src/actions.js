@@ -2,6 +2,7 @@
 export const MOVIES_REQUEST = 'MOVIES_REQUEST';
 export const MOVIES_SUCCESS = 'MOVIES_SUCCESS';
 export const MOVIES_FAILURE = 'MOVIES_FAILURE';
+export const MOVIERATINGS_SUCCESS = 'MOVIERATINGS_SUCCESS';
 
 // Action creators
 export const moviesRequest = () => ({
@@ -16,4 +17,9 @@ export const moviesSuccess = (movies) => ({
 export const moviesFailure = (message) => ({
   type: MOVIES_FAILURE,
   message,
+});
+
+export const movieRatingsSuccess = (ratings) => ({
+  type: MOVIERATINGS_SUCCESS,
+  ratings,    
 });

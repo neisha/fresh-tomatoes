@@ -1,4 +1,4 @@
-import { moviesRequest, moviesSuccess, moviesFailure } from './actions';
+import { moviesRequest, moviesSuccess, moviesFailure, movieRatingsSuccess } from './actions';
 import { connect } from 'react-redux';
 import App from './App';
 
@@ -12,6 +12,7 @@ const mapDispatchToProps = {
   moviesRequest,
   moviesSuccess,
   moviesFailure,
+  movieRatingsSuccess,
 };
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);

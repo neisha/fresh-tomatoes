@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MovieList from './MovieList.js';
-import Spinner from './Spinner.js';
+import MovieList from './MovieList';
+import Spinner from './Spinner';
 
 class App extends Component {
   handleClick = () => {
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <img className="Logo" src={logo} />
-        <button class="Button" onClick={this.handleClick} disabled={this.props.isLoading}>I want the movies</button>
+        <button className="Button" onClick={this.handleClick} disabled={this.props.isLoading}>I want the movies</button>
         {
           this.props.isLoading ? 
           <Spinner /> :
